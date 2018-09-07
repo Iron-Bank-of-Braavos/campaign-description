@@ -1,0 +1,25 @@
+.container {
+  width: 100%
+}
+
+/* .row:before,  */
+.row:after {
+    content:"";
+    display: table ;
+    clear: both;
+}
+
+.col {
+  float: left;
+}
+
+.about {
+  width: 66.67%;
+  background-color: white;
+}
+
+.pledges {
+  width: 33.33%;
+  background-color: lightgray;
+}
+

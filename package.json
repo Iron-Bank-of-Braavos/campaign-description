@@ -23,12 +23,17 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "nodemon": "^1.18.4"
+    "faker": "^4.1.0",
+    "mongoose": "^5.2.13",
+    "nodemon": "^1.18.4",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
   }
 }
