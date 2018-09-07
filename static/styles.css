@@ -1,11 +1,21 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans";
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+}
+
 .container {
   width: 100%
 }
 
 /* .row:before,  */
 .row:after {
-    content:"";
-    display: table ;
+    content: "";
+    display: table;
     clear: both;
 }
 

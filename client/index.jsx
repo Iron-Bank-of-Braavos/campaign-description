@@ -4,8 +4,8 @@ import About from './components/About.jsx'
 
 const App = props => (
   <div>
-    About
-    {/* <About /> */}
+    <h4>About</h4>
+    <About />
   </div>
 );
 
