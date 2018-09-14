@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import Asset from './Asset.jsx';
 
 class About extends React.Component {
@@ -23,8 +24,10 @@ class About extends React.Component {
       params: this.state.query
     })
     .then(data => {
-      // console.log('fetch', data.data[0].images);
-      var items = data.data[0].images;
+      // console.log('fetch', data.data.images);
+      // var items = data.data[0].images;
+      var items = data.data.images;
+
       this.setState({ images: items }, () => {
         // console.log(this.state);
       })
