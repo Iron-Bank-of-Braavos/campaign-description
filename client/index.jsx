@@ -7,6 +7,18 @@ const Main = styled.div`
   color: #020621;
   font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   line-height: 1.4;
+
+  &.pad-1 {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+`;
+
+const Container = styled.div`
+  &.pad-2 {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+  }
 `;
 
 const Row = styled.div`
@@ -29,6 +41,13 @@ const Description = styled.div`
     width: 100%;
     height: 0px;
   }
+  
+  &.pad-3 {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    box-sizing: border-box;
+  }
+
 `;
 
 const Pledges = styled.div`
@@ -36,29 +55,43 @@ const Pledges = styled.div`
   width: 33.33%;
   height: 500px;
   background-color: lightgray;
-
+  
   @media only screen and (max-width: 650px) {
     width: 100%;
     height: 0px;
     display: none;
   }
+  
+  &.pad-4 {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    box-sizing: border-box;
+  }
+`;
+
+const Header = styled.h3`
+  font-size: 2.1rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
 `;
 
 
 
 const App = props => (
-  <Main>
-    <Row className="row">
-      <Description>
-        <h3>About</h3>
-        <About />
-      </Description>
+  <Main className="pad-1">
+    <Container className="pad-2">
+      <Row className="row">
+        <Description className="pad-3">
+          <Header>About</Header>
+          <About />
+        </Description>
 
-      <Pledges>
-        <h3>Support</h3>
-        {/* Insert pledge rewards here */}
-      </Pledges>
-    </Row>
+        <Pledges className="pad-4">
+          <Header>Support</Header>
+          {/* Insert pledge rewards here */}
+        </Pledges>
+      </Row>
+    </Container>
   </Main>
 );
 
