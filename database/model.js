@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var projectSchema = new Schema({
   name: { type: String, require: true },
-  text: String,
+  url: { type: String, require: true },
   images: [String],
   videos: [String],
   links: [String]

@@ -147,68 +147,160 @@ const PStyle = styled.p`
   margin-top: 100%
 `;
 
+class ListEntry extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      isHidden: true,
+      displayMouseover: "block"
+    }
 
-const ListEntry = props => (
-  <div>
-    <PledgeReward>
+    this.showForm = this.showForm.bind(this);
+    this.renderForm = this.renderForm.bind(this);
+  }
 
-      <MouseOverSelect className="mouseover">
-        <PStyle>Select this reward</PStyle>
-      </MouseOverSelect>
+  componentDidMount() {
+    this.setState({
+      isHidden: true,
+      displayMouseover: "block"
+    })
+  }
 
-      <PledgeTop>
-        <PledgeHeader>Pledge ${props.price} or more</PledgeHeader>
+  showForm() {
+    this.setState({
+      isHidden: !this.state.isHidden,
+      displayMouseover: "none"
+    })
+  }
 
-        <PledgeTitle>{props.title} Pledge</PledgeTitle>
+  renderForm() {
+    if (!this.state.isHidden) {
+      return (
+        <PledgeForm>
+          <Shipping>
+            <FormHeader>Shipping destination</FormHeader>
+            <SelectBar />
+          </Shipping>
 
-        <PledgeDescription>
-          <p>
-            {props.info}
-          </p>
+          <Amount>
+            <FormHeader>Pledge amount</FormHeader>
+            <CurrencyBox className="mouseover">$</CurrencyBox>
+            <InputField
+              className="mouseover input-focus" 
+              type="text" 
+              value="10" 
+              placeholder="Pledge any amount" 
+            />
+          </Amount>
 
-        </PledgeDescription>
+          <ContinueButton className="button-focus">Continue</ContinueButton>
+        </PledgeForm>
+      );
+    }
+  }
 
-        <PledgeExtraInfo>
-          <ExtraInfo>
-            <InfoTitle>Estimated delivery</InfoTitle>
-            <p>{props.date} 2019</p>
-          </ExtraInfo>
-          <ExtraInfo>
-            <InfoTitle>Ships to</InfoTitle>
-            <p>Anywhere in the world</p>
-          </ExtraInfo>
-        </PledgeExtraInfo>
+  render() {
+    return (
+      <div>
+        <PledgeReward>
+
+          <MouseOverSelect className="mouseover" onClick={() => this.showForm()} style={{display: this.state.displayMouseover}}>
+            <PStyle>Select this reward</PStyle>
+          </MouseOverSelect>
+
+          <PledgeTop>
+            <PledgeHeader>Pledge ${this.props.price} or more</PledgeHeader>
+
+            <PledgeTitle>{this.props.title} Pledge</PledgeTitle>
+
+            <PledgeDescription>
+              <p>
+                {this.props.info}
+              </p>
+
+            </PledgeDescription>
+
+            <PledgeExtraInfo>
+              <ExtraInfo>
+                <InfoTitle>Estimated delivery</InfoTitle>
+                <p>{this.props.date} 2019</p>
+              </ExtraInfo>
+              <ExtraInfo>
+                <InfoTitle>Ships to</InfoTitle>
+                <p>Anywhere in the world</p>
+              </ExtraInfo>
+            </PledgeExtraInfo>
+            
+            {/* Insert "Limited (x left of y)" here */}
+
+            <Backers>{this.props.backers} backers</Backers>
+          </PledgeTop>
+
+          { this.renderForm() }
+        </PledgeReward>
+      </div>
+    );
+  }
+}
+
+// const ListEntry = props => (
+//   <div>
+//     <PledgeReward>
+
+//       {/* <MouseOverSelect className="mouseover">
+//         <PStyle>Select this reward</PStyle>
+//       </MouseOverSelect> */}
+
+//       <PledgeTop>
+//         <PledgeHeader>Pledge ${props.price} or more</PledgeHeader>
+
+//         <PledgeTitle>{props.title} Pledge</PledgeTitle>
+
+//         <PledgeDescription>
+//           <p>
+//             {props.info}
+//           </p>
+
+//         </PledgeDescription>
+
+//         <PledgeExtraInfo>
+//           <ExtraInfo>
+//             <InfoTitle>Estimated delivery</InfoTitle>
+//             <p>{props.date} 2019</p>
+//           </ExtraInfo>
+//           <ExtraInfo>
+//             <InfoTitle>Ships to</InfoTitle>
+//             <p>Anywhere in the world</p>
+//           </ExtraInfo>
+//         </PledgeExtraInfo>
         
-        {/* Insert "Limited (x left of y)" here */}
+//         {/* Insert "Limited (x left of y)" here */}
 
-        <Backers>{props.backers} backers</Backers>
-      </PledgeTop>
+//         <Backers>{props.backers} backers</Backers>
+//       </PledgeTop>
 
-      <PledgeForm>
-        <Shipping>
-          <FormHeader>Shipping destination</FormHeader>
-          <SelectBar />
-        </Shipping>
+//       <PledgeForm>
+//         <Shipping>
+//           <FormHeader>Shipping destination</FormHeader>
+//           <SelectBar />
+//         </Shipping>
 
-        <Amount>
-          <FormHeader>Pledge amount</FormHeader>
-          <CurrencyBox className="mouseover">$</CurrencyBox>
-          <InputField
-            className="mouseover input-focus" 
-            type="text" 
-            value="10" 
-            placeholder="Pledge any amount" 
-          />
-        </Amount>
+//         <Amount>
+//           <FormHeader>Pledge amount</FormHeader>
+//           <CurrencyBox className="mouseover">$</CurrencyBox>
+//           <InputField
+//             className="mouseover input-focus" 
+//             type="text" 
+//             value="10" 
+//             placeholder="Pledge any amount" 
+//           />
+//         </Amount>
 
-        <ContinueButton className="button-focus">Continue</ContinueButton>
-      </PledgeForm>
-
-
-
-    </PledgeReward>
-  </div>
-);
+//         <ContinueButton className="button-focus">Continue</ContinueButton>
+//       </PledgeForm>
+//     </PledgeReward>
+//   </div>
+// );
 
 export default ListEntry;

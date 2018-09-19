@@ -27,7 +27,7 @@ const NoRewardPledgeForm = styled.div`
 
 const NoRewardPledgeInput = styled.div`
   position: relative;
-  padding: 10px;
+  padding: 10px 0 10px 0;
   width: 100%;
   height: 42px;
   margin-bottom: 1.8rem;
