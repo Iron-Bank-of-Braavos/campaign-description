@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "start": "nodemon ./server",
     "build": "webpack -w"
   },
@@ -19,6 +20,13 @@
   },
   "homepage": "https://github.com/Iron-Bank-of-Braavos/campaign-description#readme",
   "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.5.2",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
   },
@@ -36,5 +44,15 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "styled-components": "^3.4.6"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupTests.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.jsx$": "babel-jest"
+    }
   }
 }

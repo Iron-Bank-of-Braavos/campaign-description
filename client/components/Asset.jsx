@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import faker from 'faker';
+
+const Block = styled.div`
+  margin-bottom: 10px;
+`;
 
 const Image = styled.img`
   max-width: 100%;
@@ -9,7 +14,19 @@ const Image = styled.img`
 
 const Asset = props => (
   <div>
-    <Image src={props.image} />
+    <Block>
+      <div>
+        {
+          faker.lorem.paragraph()
+        }
+      </div>
+
+      <br/>
+
+      <div>
+        <Image src={props.image} />
+      </div>
+    </Block>
   </div>
 )
 
