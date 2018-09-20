@@ -16,9 +16,10 @@ const MouseOverSelect = styled.div`
   width: 100%;
   z-index: 5;
   color: white;
+  vertical-align: middle;
 
   &.mouseover:hover {
-    display: inline-block;
+    display: block;
     background-color: rgba(0,158,116,0.9);
     transition: all 0.2s ease-in-out;
   }
@@ -151,11 +152,11 @@ const ContinueButton = styled.button`
 `;
 
 const PStyle = styled.p`
+  position: absolute;
   margin-top: 50%;
   width: 100%;
   height: 100%;
   text-align: center;
-  vertical-align: middle;
 
   &.mouseover:hover {
     display: inline-block;

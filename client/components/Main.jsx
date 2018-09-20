@@ -16,6 +16,10 @@ const MainContainer = styled.div`
 `;
 
 const Container = styled.div`
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+
   &.pad-2 {
     padding-left: 1.8rem;
     padding-right: 1.8rem;
