@@ -9,6 +9,6 @@ describe('Main Component', () => {
 
   it('should render component without props', () => {
     const mainComponent = Enzyme.shallow(<Main />);
-    expect(mainComponent).toMatchSnapshot();
+    expect(mainComponent.find('div.pad-1').exists()).toBe(true);
   })
 });

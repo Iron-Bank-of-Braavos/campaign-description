@@ -86,8 +86,11 @@ class List extends React.Component {
     
     this.state = {
       rewards: [],
-      rewardDate: ''
+      rewardDate: '',
+      value: 10
     }
+
+    this.inputAmount = this.inputAmount.bind(this);
   }
 
   componentDidMount() {
@@ -106,12 +109,21 @@ class List extends React.Component {
       rewardsArr.push(rewardsObj);
       rewardPrice += 5;
     }
-    
+
     this.setState({
       rewards: rewardsArr,
       rewardDate: faker.date.month().slice(0, 3)
     })
   };
+  
+  inputAmount(e) {
+    e.preventDefault();
+    if(e.target.value !== this.state.value) {
+      this.setState({
+        value: e.target.value
+      })
+    }
+  }
 
   render() {
     return (
@@ -128,8 +140,8 @@ class List extends React.Component {
                 <InputField
                   className="mouseover input-focus" 
                   type="text" 
-                  value="10" 
-                  placeholder="Pledge any amount" 
+                  value={this.state.value} 
+                  onChange={this.inputAmount}
                 />
               </NoRewardPledgeInput>
               <ContinueButton className="button-focus">Continue</ContinueButton>
@@ -145,7 +157,7 @@ class List extends React.Component {
                   info={reward.info} 
                   date={this.state.rewardDate}
                   price={reward.price} 
-                  backers={reward.backers} 
+                  backers={reward.backers}
                 />
               )
             })

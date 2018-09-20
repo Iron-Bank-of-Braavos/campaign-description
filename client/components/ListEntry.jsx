@@ -11,12 +11,10 @@ const PledgeReward = styled.div`
 `;
 
 const MouseOverSelect = styled.div`
-  vertical-align: middle;
   position: absolute;
   height: 100%;
   width: 100%;
   z-index: 5;
-  text-align: center;
   color: white;
 
   &.mouseover:hover {
@@ -113,6 +111,15 @@ const CurrencyBox = styled.div`
   }
 `;
 
+// const field = (props) => (
+//   <div 
+//     className={props.className} 
+//     value={props.value} 
+//     onChange={(e) => props.fn(e)}
+//   >
+//   </div>
+// )
+
 const InputField = styled.input`
   width: 100%;
   height: 42px;
@@ -144,7 +151,16 @@ const ContinueButton = styled.button`
 `;
 
 const PStyle = styled.p`
-  margin-top: 100%
+  margin-top: 50%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+
+  &.mouseover:hover {
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+  }
 `;
 
 class ListEntry extends React.Component {
@@ -153,17 +169,20 @@ class ListEntry extends React.Component {
 
     this.state = {
       isHidden: true,
-      displayMouseover: "block"
+      displayMouseover: "",
+      value: 10
     }
 
     this.showForm = this.showForm.bind(this);
     this.renderForm = this.renderForm.bind(this);
+    this.inputAmount = this.inputAmount.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       isHidden: true,
-      displayMouseover: "block"
+      displayMouseover: "block",
+      value: this.props.price
     })
   }
 
@@ -172,6 +191,15 @@ class ListEntry extends React.Component {
       isHidden: !this.state.isHidden,
       displayMouseover: "none"
     })
+  }
+
+  inputAmount(e) {
+    e.preventDefault();
+    if(e.target.value !== this.state.value) {
+      this.setState({
+        value: e.target.value
+      })
+    }
   }
 
   renderForm() {
@@ -189,8 +217,9 @@ class ListEntry extends React.Component {
             <InputField
               className="mouseover input-focus" 
               type="text" 
-              value="10" 
-              placeholder="Pledge any amount" 
+              value={this.state.value} 
+              placeholder="Pledge any amount"
+              onChange={this.inputAmount} 
             />
           </Amount>
 
@@ -206,7 +235,7 @@ class ListEntry extends React.Component {
         <PledgeReward>
 
           <MouseOverSelect className="mouseover" onClick={() => this.showForm()} style={{display: this.state.displayMouseover}}>
-            <PStyle>Select this reward</PStyle>
+            <PStyle className="mouseover">Select this reward</PStyle>
           </MouseOverSelect>
 
           <PledgeTop>
@@ -244,63 +273,5 @@ class ListEntry extends React.Component {
   }
 }
 
-// const ListEntry = props => (
-//   <div>
-//     <PledgeReward>
-
-//       {/* <MouseOverSelect className="mouseover">
-//         <PStyle>Select this reward</PStyle>
-//       </MouseOverSelect> */}
-
-//       <PledgeTop>
-//         <PledgeHeader>Pledge ${props.price} or more</PledgeHeader>
-
-//         <PledgeTitle>{props.title} Pledge</PledgeTitle>
-
-//         <PledgeDescription>
-//           <p>
-//             {props.info}
-//           </p>
-
-//         </PledgeDescription>
-
-//         <PledgeExtraInfo>
-//           <ExtraInfo>
-//             <InfoTitle>Estimated delivery</InfoTitle>
-//             <p>{props.date} 2019</p>
-//           </ExtraInfo>
-//           <ExtraInfo>
-//             <InfoTitle>Ships to</InfoTitle>
-//             <p>Anywhere in the world</p>
-//           </ExtraInfo>
-//         </PledgeExtraInfo>
-        
-//         {/* Insert "Limited (x left of y)" here */}
-
-//         <Backers>{props.backers} backers</Backers>
-//       </PledgeTop>
-
-//       <PledgeForm>
-//         <Shipping>
-//           <FormHeader>Shipping destination</FormHeader>
-//           <SelectBar />
-//         </Shipping>
-
-//         <Amount>
-//           <FormHeader>Pledge amount</FormHeader>
-//           <CurrencyBox className="mouseover">$</CurrencyBox>
-//           <InputField
-//             className="mouseover input-focus" 
-//             type="text" 
-//             value="10" 
-//             placeholder="Pledge any amount" 
-//           />
-//         </Amount>
-
-//         <ContinueButton className="button-focus">Continue</ContinueButton>
-//       </PledgeForm>
-//     </PledgeReward>
-//   </div>
-// );
 
 export default ListEntry;
