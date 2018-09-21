@@ -12,13 +12,12 @@ const Image = styled.img`
   width: auto\9;
 `;
 
+
 const Asset = props => (
   <div>
     <Block>
       <div>
-        {
-          faker.lorem.paragraph()
-        }
+        { props.text }
       </div>
 
       <br/>

@@ -4,11 +4,11 @@ const db = require('./index.js');
 var Schema = mongoose.Schema;
 
 var projectSchema = new Schema({
+  id: { type: Number, require: true },
   name: { type: String, require: true },
-  url: { type: String, require: true },
   images: [String],
-  videos: [String],
-  links: [String]
+  text: [String],
+  rctext: [String]
 });
 
 var Project = mongoose.model('Project', projectSchema);

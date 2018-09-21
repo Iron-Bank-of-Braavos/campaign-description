@@ -3,13 +3,21 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Asset from './Asset.jsx';
 
+const Header = styled.h3`
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 0 3rem 0;
+`;
+
 class About extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       query: '',
-      images: []
+      images: [],
+      text: [],
+      rctext: []
     }
 
     this.fetchData = this.fetchData.bind(this);
@@ -24,13 +32,17 @@ class About extends React.Component {
       params: this.state.query
     })
     .then(data => {
-      // console.log('fetch', data.data.images);
-      // var items = data.data[0].images;
-      var items = data.data.images;
+      var images = data.data.images;
+      var text = data.data.text;
+      var rctext = data.data.rctext;
 
-      this.setState({ images: items }, () => {
+      this.setState({ 
+        images: images, 
+        text: text,
+        rctext: rctext
+      }, () => {
         // console.log(this.state);
-      })
+      });
     })
     .catch(err => {
       console.log(err);
@@ -44,10 +56,14 @@ class About extends React.Component {
           this.state.images.map((image, index) => (
             <Asset 
               image={image}
+              text={this.state.text[index]}
               key={index}
             />
           ))
         }
+
+        <Header>Risks and challenges</Header>
+        {this.state.rctext[0]}
       </div>
     );
   }

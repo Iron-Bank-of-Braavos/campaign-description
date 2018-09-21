@@ -88,9 +88,6 @@ const Main = props => (
         <Description className="pad-3">
           <Header>About</Header>
           <About />
-
-          <Header>Risks and challenges</Header>
-          {props.paragraphs}
         </Description>
 
         <Pledges className="pad-4">

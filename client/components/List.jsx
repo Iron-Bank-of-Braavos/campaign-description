@@ -87,10 +87,13 @@ class List extends React.Component {
     this.state = {
       rewards: [],
       rewardDate: '',
-      value: 10
+      value: 10,
+      isHidden: true
     }
 
     this.inputAmount = this.inputAmount.bind(this);
+    this.showForm = this.showForm.bind(this);
+    this.renderButton = this.renderButton.bind(this);
   }
 
   componentDidMount() {
@@ -112,7 +115,8 @@ class List extends React.Component {
 
     this.setState({
       rewards: rewardsArr,
-      rewardDate: faker.date.month().slice(0, 3)
+      rewardDate: faker.date.month().slice(0, 3),
+      isHidden: true
     })
   };
   
@@ -125,11 +129,25 @@ class List extends React.Component {
     }
   }
 
+  showForm() {
+    this.setState({
+      isHidden: !this.state.isHidden,
+    })
+  }
+
+  renderButton() {
+    if (!this.state.isHidden) {
+      return (
+        <ContinueButton className="button-focus">Continue</ContinueButton>
+      );
+    }
+  }
+
   render() {
     return (
       <div>
         <PledgeList>
-          <NoRewardPledge>
+          <NoRewardPledge onClick={() => this.showForm()}>
             <NoRewardPledgeHeader>
               Make a pledge without a reward
             </NoRewardPledgeHeader>
@@ -144,7 +162,7 @@ class List extends React.Component {
                   onChange={this.inputAmount}
                 />
               </NoRewardPledgeInput>
-              <ContinueButton className="button-focus">Continue</ContinueButton>
+              { this.renderButton() }
             </NoRewardPledgeForm>
           </NoRewardPledge>
 

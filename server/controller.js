@@ -13,6 +13,7 @@ module.exports = {
       // console.log('in count', count);
     
       var randomNum = Math.floor(Math.random() * count);
+
       Project.findOne().skip(randomNum)
       .then(data => {
         // console.log(data, 'data')
@@ -22,19 +23,6 @@ module.exports = {
         console.log('Error', err);
       });
     });
-    
-    // const query = "Unstable Unicorns: Control & Chaos (The Backercorn Project)";
-    // const query = "The Enchanted Forest Fantasy Art Book"
-
-    // Project.find({
-    //   name: query
-    // })
-    // .then(data => {
-    //   res.status(200).send(data);
-    // })
-    // .catch(err => {
-    //   console.log('Error', err);
-    // });
   },
 
   post: function(req, res) {
