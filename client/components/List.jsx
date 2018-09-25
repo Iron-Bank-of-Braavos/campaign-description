@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import faker from 'faker';
 import ListEntry from './ListEntry.jsx';
 
-
 const PledgeList = styled.div`
 `;
 
@@ -147,7 +146,8 @@ class List extends React.Component {
     return (
       <div>
         <PledgeList>
-          <NoRewardPledge onClick={() => this.showForm()}>
+          <div id="root3"></div>
+          {/* <NoRewardPledge onClick={() => this.showForm()}>
             <NoRewardPledgeHeader>
               Make a pledge without a reward
             </NoRewardPledgeHeader>
@@ -164,9 +164,9 @@ class List extends React.Component {
               </NoRewardPledgeInput>
               { this.renderButton() }
             </NoRewardPledgeForm>
-          </NoRewardPledge>
+          </NoRewardPledge> */}
 
-          {
+          {/* {
             this.state.rewards.map((reward, i) => {
               return (
                 <ListEntry 
@@ -179,7 +179,7 @@ class List extends React.Component {
                 />
               )
             })
-          }
+          } */}
   
         </PledgeList>
       </div>

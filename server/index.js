@@ -1,11 +1,14 @@
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
-const db = require('../database/index.js');
+// const db = require('../database/index.sjs');
 const routes = require('./routes.js');
-const PORT = 3001;
-
+const PORT = 3002;
+const cors = require('cors');
 var app = express();
+
+
+app.use(cors());
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));

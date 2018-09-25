@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Project = require('./model.js');
 
-mongoose.connect('mongodb://localhost:27017/description');
+mongoose.connect('mongodb://mongo/mongo-description');
+// mongoose.connect('mongodb://localhost:27017/description');
+
 
 const db = mongoose.connection;
 

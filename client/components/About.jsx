@@ -28,7 +28,8 @@ class About extends React.Component {
   }
 
   fetchData() {
-    axios.get('/api/description', {
+    axios.get('http://18.222.221.214:3002/api/description', {
+    // axios.get('api/description', {
       params: this.state.query
     })
     .then(data => {
